@@ -1,0 +1,175 @@
+#自助报表筛选查询
+analy_data: 
+- source: '移网月标签'
+  sourceType: '全量' 
+  acctMonth: ['201807']
+  selfInfos: 
+  #维度
+  - labelName: '网别'
+    type: 'dimdic'
+  #维度分组
+  # - labelName: '归属名单制名称'
+  #   type: 'dimdicGroup'
+  #   groupName:  ['name1','name2']
+  #   groupValue: [['2015商务3收入集团','鞍钢附企建筑安装公司','北票社会保险局'],['鞍钢集团鞍千矿业有限责任公司','鞍山红罗商贸有限公司']]
+  #   groupDel: '2015商务3收入集团'
+  # #维度条件
+  # - labelName: '归属包区属性'
+  #   type: 'dimdicCondition'
+  #   value: ['城区综合','存量维系','大客户','电子商务','商企','社会渠道','乡镇综合']
+  # #维度计数
+  # - labelName: '地市'
+  #   type: 'dimdicCount'
+  # #数值指标计算
+  # - labelName: 'T月流量'
+  #   type: 'quota'
+  #   value: ['求和','最大值']
+      
+  # #数值指标步长分组
+  # - labelName: '在网时长（月）'
+  #   type: 'quota_step'
+  #   value: '5'
+     
+  # #数值指标选点分组
+  # - labelName: 'T月国内流量'
+  #   type: 'quota_point'
+  #   value: ['5','10','15']
+
+  # #数值条件
+  # - labelName: 'T-2月流量'
+  #   type: 'quota_condition'
+  #   value: ['>=','0','and','<','500']
+
+  # #时间指标按年月分组
+  # - labelFile: ['基础信息']
+  #   type: 'quota_time'
+  #   labelName: '入网时间'
+  #   value: '月'
+      
+  # #时间选点分组
+  # - labelFile: ['产品信息','合约信息']
+  #   type: 'quota_timePoint'
+  #   labelName: '合约开始时间（当前）'
+  #   value: ['201901','201801','201701'] #需要从近往远写
+     
+  # #时间作为查询条件
+  # - labelFile: ['消费行为','缴费']
+  #   type: 'quota_timeCondition'
+  #   labelName: '最近一次缴费时间'
+  #   value: ['20180101020305','20200101020305']
+
+
+- source: '正式移网日标签'
+  sourceType: '已传' 
+  sourceTypeName: ['上传关联文件自动化']
+  acctMonth: ['20180831','20191220']
+  selfInfos: 
+  #维度
+  - labelName: '网别'
+    type: 'dimdic'
+
+  #维度分组
+  - labelName: '归属名单制名称'
+    type: 'dimdicGroup'
+    groupName:  ['name1']
+    groupValue: [['2015商务3收入集团']]
+
+- source: '移网月标签'
+  sourceType: '已存' 
+  sourceTypeName: ['保存客户群自动化']
+  acctMonth: ['201807']
+  selfInfos:
+  #维度
+  - labelName: '网别'
+    type: 'dimdic'
+  levelInfos: 
+  - labelName: 'T-2月流量'
+    type: 'quota_point'
+    value: ['5','10','15']
+  
+  - labelName: '在网时长（月）'
+    type: 'quota_step'
+    value: '5'
+
+  - labelName: '入网时间'
+    type: 'quota_time'
+    value: '月'
+
+
+- source: '移网月标签'
+  sourceType: '全量' 
+  acctMonth: ['201807']
+  selfInfos: 
+   #维度
+  - labelName: '网别'
+    type: 'dimdic'
+  #数值指标选点分组
+  - labelName: 'T月国内流量'
+    type: 'quota_point'
+    value: ['5','10','15']
+
+  - labelName: 'T月流量'
+    type: 'quota'
+    value: ['求和','最大值']
+  levelInfos: 
+  - labelName: 'T-2月流量'
+    type: 'quota_point'
+    value: ['5','10','15']
+  
+  - labelName: '在网时长（月）'
+    type: 'quota_step'
+    value: '5'
+
+  - labelName: '入网时间'
+    type: 'quota_time'
+    value: '月'
+  conditionInfos:
+  - labelName: '订单数'
+    value: ['>=','0','and','<','500'] 
+  - labelName: 'T月流量'
+    value: ['>=','0'] 
+
+#自助报表点击模板查询
+filter_Info:
+- filter_name : 
+  type: '我的'
+  name: '分享模板测试'
+  conditionInfos:
+  - labelName: '订单数'
+    value: ['>=','0','and','<','500'] 
+
+#保存模板
+save_template: 
+- source: '移网月标签'
+  sourceType: '全量' 
+  acctMonth: ['201807']
+  selfInfos: 
+  #维度
+  - labelName: '网别'
+    type: 'dimdic'
+  filterName: '分享模板测试'
+  filterType: '分享' 
+  filterStaff: []  #保存分享的用户名，不保存分享填写['']
+  remark: '保存模板自动化测试'
+
+
+#下载
+download_data:
+- source: '移网月标签'
+  sourceType: '全量' 
+  acctMonth: ['201807']
+  selfInfos: 
+  #维度
+  - labelName: '网别'
+    type: 'dimdic'
+
+#数据清理
+data_clean_analy: 
+- filter_name: 
+  - type: '我的'
+    name: ['测试']
+  - type: '分享'
+    name: ['测试']
+  - type: '公共'
+    name: ['测试']
+

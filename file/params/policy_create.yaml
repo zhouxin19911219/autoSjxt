@@ -1,0 +1,54 @@
+policy_create: 
+- scene_select: 
+  - sceneName: '高流失-存费送费Z2'
+    maxVal: '5000'
+    sceneCaliber:
+    - labelFile: ['基础信息']
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+    - labelsearch: '标签名' 
+      searchlabel: '平均金额' 
+      labelType: '数值' 
+      labelFile: '' 
+      labelName: '近3个月欠费次数平均金额' 
+      labelValue: ['>=','0','and','<','100']
+    
+    
+  - sceneName: '2i高流失-存费送权益Z2'
+    maxVal: '3000'
+    sceneCaliber:
+    - labelFile: ['基础信息']
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+    - labelsearch: '标签名' 
+      searchlabel: '平均金额' 
+      labelType: '数值' 
+      labelFile: '' 
+      labelName: '近3个月欠费次数平均金额' 
+      labelValue: ['>=','0','and','<','100']
+    marketNum: '0.1%' #营销人数 可以具体数值，可以百分比
+    adjustNum: '0.1%' #调整人数 可以具体数值，可以百分比
+    
+    strategyCaliber:
+    - product_type: '低消'
+      product: '低消18元'
+      labelInfo:
+      - labelFile: ['基础信息']
+        labelType: '枚举' 
+        labelName: '网别' 
+        labelValue: ['2G','3G']     
+
+policy_scene_clean:
+- groupType: '场景用户'
+  groupName: ['2i高流失-存费送权益Z2']
+
+
+
+
+#目前没有实现
+policy_scene_flow:
+- groupType: '已存用户'
+  groupName: 'dddd'
+

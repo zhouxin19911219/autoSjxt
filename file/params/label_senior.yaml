@@ -1,0 +1,536 @@
+---
+#上传用户
+data_upload_senior : 
+- uploadname: '上传关联文件自动化'
+  is_joint: 1 
+  dataType: '用户ID'
+  uploadfile: '/file/label/100数据.txt' 
+  uploadremark: '上传文件自动化'
+
+- uploadname: '上传剔除文件自动化'
+  is_joint: 0 
+  dataType: 'device_number'
+  uploadfile: '/file/label/device_number.txt' 
+  uploadremark: '上传文件自动化'
+
+#选择已传用户再已存
+data_uploaded_senior:
+- group: '已传' 
+  groupName: ['文件自动化']
+  sourceInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+  labelInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelsearch: '标签名'
+    searchlabel: 'T月'
+    labelType: '数值'
+    labelName: 'T月流量'
+    labelValue: ['>','2','and','<','101']
+    labelSymbol: 'or'
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+    labelType: '枚举'
+    labelFile:  ['基础信息']
+    labelName: '网别' 
+    labelValue: ['2G','3G']
+  savedName: '保存客户群自动化' 
+  savedExpirationTime: '20250917'
+
+- group: '已存' 
+  groupName: ['保存客户群自动化']
+  sourceInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - labelType: '枚举'
+    labelFile:  ['基础信息']
+    labelName: '网别' 
+    labelValue: ['2G','3G']
+  savedName: '保存客户群自动化' 
+  savedExpirationTime: '20250917'
+
+- sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - labelType: '枚举'
+    labelFile:  ['基础信息']
+    labelName: '网别' 
+    labelValue: ['2G','3G']
+  savedName: '保存客户群自动化' 
+  savedExpirationTime: '20250917'
+
+
+#高级版查询
+labellib_senior_data: 
+- sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - labelsearch: '标签名'
+    searchlabel: '网别'
+    labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+    labelName: '网别'
+    labelValue: ['2G','3G']
+  - symbol: 'and' #高级版的标签连接：and/or
+
+  - labelsearch: '标签名'
+    searchlabel: 'T月'
+    labelType: '数值'
+    labelFile: ''
+    labelName: 'T月流量'
+    labelValue: ['>','2','and','<','101']
+  - symbol: 'or'
+
+  - labelsearch: '标签名'
+    searchlabel: '时间'
+    labelType: '时间'
+    labelFile: ''
+    labelName: '合约开始时间（当前）'
+    labelValue: ['','202002']
+  - symbol: 'or'
+
+  - labelsearch: '标签名'
+    searchlabel: 'user'
+    labelType: '大枚举值'
+    inverse: '否'
+    labelFile: ''
+    labelName: 'user_id'
+    labelValue: '/file/label/user_id.txt'
+  - symbol: 'and'
+
+  - labelsearch: '枚举值'
+    searchlabel: '凌源市'
+    labelType: '大数量枚举'
+    inverse: '是' 
+    labelFile: '' 
+    labelName: '归属包区名称' 
+    labelValue: '/file/label/枚举值_测试.txt'
+    labelSelect: 
+    - labelSearch: '凌源市'
+      labelValue: all
+
+
+- group: '已存'
+  groupName: ['保存客户群自动化']
+  sourceInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+  labelInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelType: '时间' 
+    labelFile: ['消费行为','缴费'] 
+    labelName: '最近一次缴费时间'
+    labelValue: ['20100205050609','']
+  - symbol: 'and' 
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+    labelType: '数值' 
+    labelFile: ['消费行为'] 
+    labelName: '当月累计流量溢出费（计）'
+    labelValue: ['>','5']
+
+- group: '已传'
+  groupName: ['文件自动化']
+  sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - labelsearch: ''
+    searchlabel: ''
+    labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+
+- sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+  - symbol: 'and'
+  - labelFile:  ['基础信息']
+    labelName: '网别' 
+    labelType: '枚举'
+  - symbol: '输入框'
+    value: 'in'
+  - symbol: '('
+  - symbol: '输入框'
+    value: "'2G','3G','4G'" 
+  - symbol: ')'
+
+
+- group: '已存' 
+  groupName: ['保存客户群自动化']
+  sourceInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+  labelInfo: 
+  - symbol: '('
+  - source: '移网月标签' #如果只有一个数据源一个账期，不需要写
+    sourceType: '月' #如果只有一个数据源一个账期，不需要写
+    acct_month: '201807' #如果只有一个数据源一个账期，不需要写
+    labelFile:  ['流量行为']
+    labelName: 'T月国内流量' 
+    labelType: '数值'
+  - symbol: '>'
+  - symbol: '输入框'
+    value: '3'
+  - symbol: 'and'
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelFile:  ['基础信息']
+    labelName: '网别' 
+    labelType: '枚举'
+  - symbol: '输入框'
+    value: 'in'
+  - symbol: '('
+  - symbol: '输入框'
+    value: "'2G','3G','4G'" 
+  - symbol: ')'
+  - symbol: 'or'
+  - symbol: '('
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelFile:  ['流量行为']
+    labelName: 'T月国内流量' 
+    labelType: '数值'
+  - symbol: '/'
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelFile:  ['基础信息']
+    labelName: '在网时长（月）'
+    labelType: '数值' 
+  - symbol: '>='
+  - symbol: '输入框'
+    value: '0'  
+  - symbol: ')'
+  - symbol: 'and'
+  - symbol: '('
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelFile:  ['流量行为']
+    labelName: 'T月流量' 
+    labelType: '数值'
+  - symbol: '+'
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelFile:  ['流量行为']
+    labelName: 'T-1月流量' 
+    labelType: '数值'
+  - symbol: '-'
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelFile:  ['流量行为']
+    labelName: 'T-2月流量' 
+    labelType: '数值'
+  - symbol: '>'
+  - symbol: '输入框'
+    value: '0'    
+  - symbol: ')'
+
+#保存标签筛选
+save_label_filter_data_senior : 
+- group: '已传'
+  groupName: ['文件自动化']
+  sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+  labelInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+  - symbol: 'and' 
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+    labelType: '数值' 
+    labelFile: ['消费行为'] 
+    labelName: '当月累计流量溢出费（计）'
+    labelValue: ['>','5']
+  data_analy :    
+  - analySource: '正式移网日标签(20180831)'
+    dimension:  ['地市','融合类型','离网类型代码']
+    target:  ['当月累计未知的流量']
+  - analySource: '移网月标签(201807)'  
+    dimension:  ['地市','user_id']
+    target:  ['人数']
+  filter:
+  - filterName: '分享日月混合模板自动化测试'
+    filterType: '分享' 
+    filterStaff: [] 
+    remark: '保存模板自动化测试'
+
+- group: '已传'
+  groupName: ['文件自动化']
+  sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+  data_analy :  
+  - analySource: '移网月标签(201807)'  
+    dimension:  ['网别','地市']
+    target:  ['人数']
+  filter:   
+  - filterName: '公共模板自动化测试'
+    filterType: '公共' 
+    filterStaff: [] #保存分享的用户名，不保存分享填写['']
+    remark: '保存模板自动化测试'
+    
+- group: '已存'
+  groupName: ['保存客户群自动化']
+  sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+  data_analy :    
+  - analySource: '正式移网日标签(20180831)'
+    dimension:  ['网别','地市']
+    target:  ['人数'] 
+  filter: 
+  - filterName: '我的模板自动化测试'
+    filterType: '我的' 
+    remark: '保存模板自动化测试'
+
+- sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+  filter: 
+  - filterName: '分享一个筛选条件模板自动化测试'
+    filterType: '分享' 
+    remark: '分享一个筛选条件模板自动化测试'
+
+- sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+  filter: 
+  - filterName: '我的一个筛选条件模板自动化测试'
+    filterType: '我的' 
+    remark: '我的一个筛选条件模板自动化测试'
+
+
+#点击模板查看
+filter_user_senior:
+- type: '我的'
+  name: '我的一个筛选条件模板自动化测试'
+  group: '已传'
+  groupName: ['文件自动化']
+  sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - symbol: 'and' #模板点击后，需要点击 and or 连接
+  - labelsearch: '标签名'
+    searchlabel: '网别'
+    labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+    labelName: '网别'
+    labelValue: ['2G']
+
+- type: '分享'
+  name: '分享一个筛选条件模板自动化测试' 
+  group: '已存'
+  groupName: ['保存客户群自动化']
+  sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  labelInfo: 
+  - symbol: 'and'
+  - labelsearch: '枚举值'
+    searchlabel: '2G'
+    labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+    labelName: '网别'
+    labelValue: ['2G']
+  
+- type: '公共'
+  name: '公共模板自动化测试'
+
+
+
+  
+#下载,如果不想测试下载功能或者没有下载按钮不测试，可以这样写
+# data_download_senior : 
+# - 
+
+data_download_senior : 
+- group: '已传'
+  groupName: ['文件自动化']
+  sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+  labelInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+  download_data:
+  - download: ['入网时间']
+    source: '正式移网日标签(20180831)'
+  - download: ['网别','地市','入网时间','user_id']
+    source: '移网月标签(201807)'
+  addTemplate: 
+    #需要有download才可以保存模板
+    templateName: '我的模板'
+    templateType: '我的'
+    templateSub: '保存我的模板'
+  selectTemplate: 
+    #选择已存模板
+    templateType: '我的'
+    templateName: '我的模板'
+
+- sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+  labelInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+  download_data:
+  - download: ['入网时间']
+    source: '正式移网日标签(20180831)'
+  - download: ['网别','地市','入网时间','user_id']
+    source: '移网月标签(201807)'
+  addTemplate: 
+    #需要有download才可以保存模板
+    templateName: '分享模板'
+    templateType: '分享'
+    templateSub: '分享我的模板'
+    staffs: ['luxingyu','zhouxin']
+
+#统计分析
+data_analy_senior :  
+- group: '已传'
+  groupName: ['文件自动化']
+  sourceInfo:
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+  labelInfo: 
+  - source: '移网月标签'
+    sourceType: '月'
+    acct_month: '201807'
+    labelType: '时间'
+    labelFile: ['消费行为', '缴费']
+    labelName: '最近一次缴费时间'
+    labelValue: ['20180205050609', '']
+  - symbol: 'and'
+  - source: '正式移网日标签'
+    sourceType: '日'
+    acct_month: '20180831'
+    labelType: '枚举'
+    labelFile:  ['基础信息']
+    labelName: '网别' 
+    labelValue: ['2G','3G']
+  data_analy :    
+  - analySource: '移网月标签(201807)'
+    dimension:  ['地市','user_id']
+    target:  ['人数']
+  - analySource: '正式移网日标签(20180831)'
+    dimension:  ['地市','融合类型','离网类型代码']
+    target:  ['当月累计未知的流量']
+
+
+#清理已存/已传/保存筛选
+data_clean_senior: 
+- saved_name: ['保存客户群自动化']
+  uploaded_name: ['上传关联文件自动化','上传剔除文件自动化']
+  filter_name: 
+  - type: '我的'
+    name: ['自动化测试']
+  - type: '分享'
+    name: ['自动化测试']
+  - type: '公共'
+    name: ['自动化测试']
+
+
+

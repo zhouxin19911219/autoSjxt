@@ -1,0 +1,22 @@
+
+#数据库链接信息
+
+mysql_config: 
+  host : '192.168.100.181'
+  # port : 23309
+  port: 23307
+  user : 'root'
+  password : '123456'
+  charset : 'utf8'
+
+
+gp_config:
+  # database: 'relrpt'
+  database: 'devrpt'
+  user: 'gpadmin'
+  password: 'ZicaiGp'
+  host: '192.168.100.51'
+  port: 5432
+
+
+

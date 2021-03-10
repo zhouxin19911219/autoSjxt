@@ -1,0 +1,482 @@
+
+#=================================标签库============================
+#上传用户
+data_upload : 
+- dataType: 'user_id'
+  uploadname: '上传剔除文件自动化'
+  is_joint: 0 #是否剔除
+  uploadfile: '/file/label/100数据.txt' 
+  uploadremark: '上传文件自动化'
+
+- dataType: 'device_number'
+  uploadname: '上传关联文件自动化'
+  is_joint: 1 
+  uploadfile: '/file/label/device_number.txt' 
+  uploadremark: '上传文件自动化'
+
+#选择已传用户再已存
+data_uploaded:
+- group: '已传' 
+  groupName: ['上传剔除文件自动化']
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+      labelFile: '' #目录类型增加labelFile为标签的上级目录
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  - source: '正式移网日标签' 
+    sourceType: '日' 
+    acct_month: '20180831'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+      labelFile: '' #目录类型增加labelFile为标签的上级目录
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  savedName: '保存客户群自动化' 
+  savedExpirationTime: '20250917'
+- group: '已存' 
+  groupName: ['保存客户群自动化']  
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+      labelFile: '' #目录类型增加labelFile为标签的上级目录
+      labelName: '网别' 
+      labelValue: ['2G','3G']  
+  savedName: '保存客户群自动化' 
+  savedExpirationTime: '20250917'
+- group: '全量' 
+  sourceInfo:
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807' 
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+      labelFile: '' #目录类型增加labelFile为标签的上级目录
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  savedName: '保存客户群自动化测试数据' 
+  savedExpirationTime: '20250917'
+
+#标签库查询
+labellib_data : 
+- group: '全量' 
+  sourceInfo:
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'  
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+      labelFile: '' #目录类型增加labelFile为标签的上级目录
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+     
+    - labelsearch: '标签名' 
+      searchlabel: 'T月' 
+      labelType: '数值' 
+      labelFile: '' 
+      labelName: 'T月流量' 
+      labelValue: ['>=','0','and','<','100']
+        
+    - labelsearch: '标签名' 
+      searchlabel: '时间' 
+      labelType: '时间' 
+      labelFile: '' 
+      labelName: '合约开始时间（当前）' 
+      labelValue: ['201001','201911']
+        
+    - labelsearch: '标签名' 
+      searchlabel: 'user' 
+      labelType: '大枚举值' 
+      inverse: '是' 
+      labelFile: '' 
+      labelName: 'user_id' 
+      labelValue: '/file/label/user_id.txt'
+        
+    - labelsearch: '' 
+      searchlabel: '' 
+      labelType: '时间' 
+      labelFile: ['消费行为','缴费'] 
+      labelName: '最近一次缴费时间' 
+      labelValue: ['20100205050609','20191105050609']
+        
+    - labelsearch: '枚举值' 
+      searchlabel: '凌源市' 
+      labelType: '大数量枚举' 
+      inverse: '是' 
+      labelFile: '' 
+      labelName: '归属包区名称' 
+      labelValue: '/file/label/枚举值_测试.txt'
+      labelSelect: 
+      - labelSearch: '凌源市'
+        labelValue: all
+  - source: '正式移网日标签' 
+    sourceType: '日' 
+    acct_month: '20180831'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '时间' 
+      labelType: '时间' 
+      labelFile: '' 
+      labelName: '合约开始时间（当前）' 
+      labelValue: ['201001','201911']
+- group: '已传' 
+  groupName: ['上传剔除文件自动化','上传关联文件自动化']
+  sourceInfo:
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201806'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '时间' 
+      labelType: '时间' 
+      labelFile: '' 
+      labelName: '合约开始时间（当前）' 
+      labelValue: ['201001','201911']
+
+- group: '已存' 
+  groupName: ['保存客户群自动化']
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '枚举值' 
+      searchlabel: '凌源市' 
+      labelType: '大数量枚举' 
+      inverse: '是' 
+      labelName: '归属包区名称' 
+      labelSelect: 
+      - labelSearch: '凌源市'
+        labelValue: all
+
+  
+- group: '已存' 
+  groupName: ['保存客户群自动化']
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '枚举值' 
+      searchlabel: '凌源市' 
+      labelType: '大数量枚举' 
+      inverse: '是' 
+      labelFile: '' 
+      labelName: '归属包区名称' 
+      labelValue: '/file/label/枚举值_测试.txt'
+      labelSelect: 
+      - labelSearch: '凌源市'
+        labelValue: all
+
+
+#查询统计分析后保存标签筛选
+save_label_filter_data : 
+- sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+      labelFile: '' #目录类型增加labelFile为标签的上级目录
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  - source: '正式移网日标签' 
+    sourceType: '日' 
+    acct_month: '20180831'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+      labelFile: '' #目录类型增加labelFile为标签的上级目录
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  analySource: '正式移网日标签'
+  dimension:  ['地市','融合类型','离网类型代码'] #统计分析的维度
+  target:  ['当月累计未知的流量'] #统计分析的指标
+  filterName: '分享日月混合模板自动化测试'
+  filterType: '分享' 
+  filterStaff: []  #保存分享的用户名，不保存分享填写['']
+  remark: '保存模板自动化测试'
+
+- sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+      labelFile: '' #目录类型增加labelFile为标签的上级目录
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  - source: '正式移网日标签' 
+    sourceType: '日' 
+    acct_month: '20180831'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' #枚举：01/大数值：枚举值超过500/数值：02/时间：03/大枚举值：07/目录：05/
+      labelFile: '' #目录类型增加labelFile为标签的上级目录
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  analySource: '移网月标签'
+  dimension:  ['地市'] #统计分析的维度
+  target:  ['人数'] #统计分析的指标
+  filterName: '分享user_id混合模板自动化测试'
+  filterType: '分享' 
+  filterStaff: []  #保存分享的用户名，不保存分享填写['']
+  remark: '保存模板自动化测试'
+
+
+- group: '全量' 
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  filterName: '公共模板自动化测试'
+  filterType: '公共' 
+  filterStaff: [''] #保存分享的用户名，不保存分享填写['']
+  remark: '保存模板自动化测试'
+    
+- group: '全量' 
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别' 
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  filterName: '我的模板自动化测试'
+  filterType: '我的' 
+  filterStaff: [''] #保存分享的用户名，不保存分享填写['']
+  remark: '保存模板自动化测试'
+
+#点击模板查看
+filter_user:
+- group: '全量' 
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '套餐名称' 
+      labelType: '大数量枚举' 
+      inverse: '是' 
+      labelName: '套餐名称' 
+      labelSelect: 
+      - labelSearch: '套餐'
+        labelValue: ['126元基本套餐B','156套餐-集团都市卡1']
+
+    - labelsearch: '枚举值' 
+      searchlabel: '凌源市' 
+      labelType: '大数量枚举' 
+      inverse: '是' 
+      labelFile: '' 
+      labelName: '归属包区名称' 
+      labelValue: '/file/label/枚举值_测试.txt'
+      labelSelect: 
+      - labelSearch: '凌源市'
+        labelValue: all
+
+
+  type: '我的'
+  name: '我的模板自动化测试'
+
+- group: '已传' 
+  groupName: ['自动化']
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '套餐名称' 
+      labelType: '大数量枚举' 
+      inverse: '是' 
+      labelName: '套餐名称' 
+      labelSelect: 
+      - labelSearch: '套餐'
+        labelValue: ['126元基本套餐B','156套餐-集团都市卡1']
+
+  type: '分享'
+  name: '分享模板自动化测试' 
+
+- group: '已存' 
+  groupName: ['自动化']
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '套餐名称' 
+      labelType: '大数量枚举' 
+      inverse: '是' 
+      labelName: '套餐名称' 
+      labelSelect: 
+      - labelSearch: '套餐'
+        labelValue: ['126元基本套餐B','156套餐-集团都市卡1']
+  type: '公共'
+  name: '公共模板自动化测试'
+
+#下载
+data_download : 
+- group: '全量' 
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别'
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  - source: '正式移网日标签' 
+    sourceType: '日' 
+    acct_month: '20180831'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别'
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  download_data:
+  - download: ['入网时间','user_id']
+    source: '正式移网日标签'
+  - download: ['网别','地市','入网时间','user_id']
+    source: '移网月标签'
+  addTemplate: 
+    #需要有download_data才可以保存模板
+    templateName: '我的模板'
+    templateType: '我的'
+    templateSub: '保存我的模板'
+  selectTemplate: 
+    #选择已存模板
+    templateType: '我的'
+    templateName: '我的模板'
+
+- sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+  - source: '正式移网日标签' 
+    sourceType: '日' 
+    acct_month: '20180831'
+  selectTemplate: 
+    #选择已存模板
+    templateType: '我的'
+    templateName: '我的模板'
+
+- sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别'
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  download_data: 
+    - download: ['网别','地市','入网时间','user_id']
+  addTemplate: 
+    #需要有download_data才可以保存模板
+    templateName: '分享模板'
+    templateType: '分享'
+    templateSub: '保存分享模板'
+    staffs: ['admin','luxingyu','zhouxin']
+
+- sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+  selectTemplate: 
+    #选择已存模板
+    templateType: '分享'
+    templateName: '分享模板'
+
+
+#统计分析
+data_analy :  
+- group: '全量' 
+  sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别'
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  analySource: '移网月标签'
+  dimension:  ['地市','网别']
+  target:  ['人数']
+- sourceInfo: 
+  - source: '移网月标签' 
+    sourceType: '月' 
+    acct_month: '201807'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别'
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  - source: '正式移网日标签' 
+    sourceType: '日' 
+    acct_month: '20180831'
+    labelInfo: 
+    - labelsearch: '标签名' 
+      searchlabel: '网别'
+      labelType: '枚举' 
+      labelName: '网别' 
+      labelValue: ['2G','3G']
+  analySource: '正式移网日标签'
+  dimension:  ['地市','网别']
+  target:  ['超套流量']
+
+
+#清理已存/已传/保存筛选
+data_clean: 
+- saved_name: ['保存客户群自动化']
+  uploaded_name: ['上传关联文件自动化','上传剔除文件自动化']
+  filter_name: 
+  - type: '我的'
+    name: ['自动化测试']
+  - type: '分享'
+    name: ['自动化测试']
+  - type: '公共'
+    name: ['自动化测试']
+
+
+
+

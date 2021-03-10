@@ -1,0 +1,37 @@
+label_lib: 
+  file_dir: ['自助分析']
+  menu: '标签库'
+
+auto_analy: 
+  file_dir: ['自助分析']
+  menu: '自助报表' 
+
+list_build: 
+  file_dir: ['清单推送','清单v2']
+  menu: '清单发布'  
+
+list_search: 
+  file_dir: ['清单推送','清单v2']
+  menu: '清单查询' 
+
+list_download:
+  file_dir: ['清单推送','清单v2']
+  menu: '清单下载'   
+
+zf_calculate: 
+  file_dir: ['维系一体化']
+  menu: '资费测算'   
+
+sql_search:
+  file_dir: ['自助分析']
+  menu: 'SQL查询'
+
+
+report_design:
+  file_dir: ['监控报表']
+  menu: '报表设计器'
+
+
+policy_create:
+  file_dir: ['维系一体化']
+  menu: '策略创建'

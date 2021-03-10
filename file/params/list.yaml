@@ -1,0 +1,72 @@
+list_data:
+- listType: '文件'
+  listname: '文件清单发布自动化'
+  acctDate: '202005'
+  listFile: '/file/list/老用户3G流失名单gbk.csv'
+  listMarkFile: '/file/list/老用户3G流失名单gbk.csv'
+  listApprove: '否' #是否审批
+  ApproveStaff: 'zhouxin_dishi'
+  invalidTime: '1' #1 1天；7 7天；15 15天；-1 月底；固定账期20200812
+  listSplit: '是' #是否拆分
+  splitField: '地市'
+  splitInfo:
+  - splitWay: '沈阳' #不拆分时不需要写splitField默认选择
+    splitStaff: ['周欣']
+  - splitWay: '大连'
+    splitStaff: ['卢星羽']
+  - splitWay: '全部'
+    splitStaff: ['管理员']
+
+- listType: '数据'
+  listname: '数据清单发布自动化'
+  acctDate: '202002'
+  cycle: '0' #day 日周期 ；month 月周期； 0 非周期 ；   自动化建议都是非周期
+  spilt_sql: 'select *,city_name as "地市" from anrpt.rpt_label_info where  acct_month=201812 order by user_id limit 100 '
+  listMarkFile: '/file/list/老用户3G流失名单gbk.csv'
+  listApprove: '否' #是否审批
+  ApproveStaff: 'zhouxin'
+  invalidTime: '' #1 1天；7 7天；15 15天；-1 月底；固定账期20200812，注意固定账期需要写今天之后的日期，填写空，默认当前日期
+  listSplit: '否' #是否拆分
+  splitInfo:
+  - splitWay: '不拆分'
+    splitStaff: ['周欣','管理员','卢星羽']
+
+# - listType: '数据'
+#   listname: '数据清单发布自动化-月底失效拆分'
+#   acctDate: '202001'
+#   cycle: '0'
+#   spilt_sql: 'select *,city_name as "地市" from anrpt.rpt_label_info where acct_month=${month-7} limit 10  '
+#   listMarkFile: ''
+#   listApprove: '是' #是否审批
+#   ApproveStaff: 'zhouxin'
+#   invalidTime: '-1' #1 1天；7 7天；15 15天；-1 月底；固定账期20200812
+#   listSplit: '否' #是否拆分
+#   replaceType: 'Manual' #'all' 替换所有 ; 'reality' 替换实际值；  'Manual' 手动替换
+#   replaceTime: ['202002']
+#   splitStaff: ['zhouxin','管理员','卢星羽']
+
+# - listType: '数据'
+#   listname: '数据清单发布自动化-1天失效拆分'
+#   acctDate: '202003'
+#   cycle: '0'
+#   spilt_sql: 'select *,city_name as "地市" from anrpt.rpt_label_info where  acct_month=201812 order by user_id  '
+#   listMarkFile: ''
+#   listApprove: '是' #是否审批
+#   ApproveStaff: 'zhouxin'
+#   invalidTime: '1' #1 1天；7 7天；15 15天；-1 月底；固定账期20200812
+#   listSplit: '否' #是否拆分
+#   splitStaff: ['zhouxin','管理员','卢星羽']
+
+# - listType: '数据'
+#   listname: '数据清单发布自动化'
+#   acctDate: '202002'
+#   cycle: '0'
+#   spilt_sql: 'select *,city_name as "地市" from anrpt.rpt_label_info where  acct_month=201812 order by user_id  '
+#   listMarkFile: '/file/list/老用户3G流失名单gbk.csv'
+#   listApprove: '否' #是否审批
+#   ApproveStaff: 'zhouxin'
+#   invalidTime: '' #1 1天；7 7天；15 15天；-1 月底；固定账期20200812，注意固定账期需要写今天之后的日期，填写空，默认当前日期
+#   listSplit: '是' #是否拆分
+#   splitField: '地市' 
+#   splitStaff: ['zhouxin','管理员','卢星羽']
+

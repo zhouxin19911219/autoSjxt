@@ -1,0 +1,12 @@
+zf_calculate: 
+- source: '资费测算'
+  sourceType: '已传'
+  labelInfo: 
+  - labelsearch: '标签名' 
+    searchlabel: '时间' 
+    labelType: '时间' 
+    labelFile: '' 
+    labelName: '合约开始时间（当前）' 
+    labelValue: ['201901','202002']
+  product_type: '低消'
+  product: '低消18元'

@@ -1,0 +1,21 @@
+
+config: 
+  url: 'http://192.168.100.180:20100/dvp-login-normal/login/mainFrame' #地址
+  is_show: True
+  # url: 'https://218.60.38.68:18980/dvp-login-normal/login/mainFrame'
+  usr_suc: 'zhouxin_dishi' #用户名
+  pwd_suc: '123456' 
+
+  #测试登录失败的用户名密码
+  usr_err: 'zhouxin_dishi'
+  pwd_err: 'ifudata@202000'
+
+report_design:
+  om: 'omMySQL'
+  sys: 'sysMySQL'
+  gp: 'rptGP'
+
+
+
+
+

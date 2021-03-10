@@ -1,0 +1,90 @@
+
+
+sql_search: 
+- source: 'anrpt'
+  table: 'label_code_def'
+  sql: 'select * from anrpt.label_code_def'
+  operateInfo: 
+  - operate: '执行'
+  - operate: '格式化SQL'
+  # - operate: '清空'
+  - operate: '保存模板'
+    filter: 
+    - filterName: 'sql查询自动化模板' 
+      filterType: '分享' 
+      ifPushIop: '否' #是否推送IOP
+      isCreateTask: True
+      taskType: '单次' #单次或周期
+      executionTime: '2021011110' #执行时间，可以不写，默认今天00点 
+      remark: 'remark'
+      staffs: ['zhouxin','zhouxin_dishi','luxingyu']
+
+# - source: 'anrpt'
+#   table: 'label_code_def'
+#   sql: 'select * from anrpt.label_code_def'
+#   operateInfo: 
+#   - operate: '执行'
+#   - operate: '格式化SQL'
+#   # - operate: '清空'
+#   - operate: '保存模板'
+#     filter: 
+#     - filterName: 'sql查询自动化模板' 
+#       filterType: '我的' 
+#       filterFileName: '自动化测试模板-勿动' #可以不写，选择默认的模板
+#       ifPushIop: '否' #是否推送IOP
+#       isCreateTask: True
+#       taskType: '周期'
+#       # startTime: '20210108'
+#       # endTime: '20210109'
+#       # executionTime: '00' #可以不写，默认今天开始，2天后结束
+#       remark: 'remark'
+#   # - operate: '保存客群'  
+
+
+# - type: '我的'
+#   filterName: '自动化模板'
+#   sql: 'select * from anrpt.rpt_label_info_1_prt_p_201812 limit 3'
+#   operateInfo: 
+#   - operate: '执行'
+#   - operate: '保存客群'
+#     saved: 
+#     - savedName: 'sql查询已存自动化测试'
+#       savedExpirationTime: '20250917'
+#       remark: 'remark'
+
+# - type: '公共'
+#   filterName: 'label_info_201911勿动zx'
+#   sql: 'select * from anrpt.rpt_label_info_1_prt_p_201812 order by user_id_t limit 3000'
+#   operateInfo: 
+#   - operate: '执行'
+#   - operate: '统计分析'
+#     selfInfos: 
+#     #维度
+#     - labelName: 'net_type'
+#       type: 'dimdic'
+#     #维度分组
+#     - labelName: 'mdz_name'
+#       type: 'dimdicGroup'
+#       groupName:  ['name1','name2']
+#       groupValue: [['营口市中医院','本溪县水电局'],['未知','盘锦市第二初级中学']]
+#       groupDel: '营口市中医院'
+
+#     - labelName: 'mo_dura'
+#       type: 'quota'
+#       value: ['求和','最大值']
+#     - labelName: 'in_date'
+#       type: 'quota_timeCondition'
+#       value: ['20000101','20200101']
+
+
+data_clean: 
+- filter_name: 
+  - type: '我的'
+    name: ['自动化模板']
+  - type: '分享'
+    name: ['自动化模板']
+  - type: '公共'
+    name: ['自动化模板']
+  operateInfo:
+  - operate: '任务管理'
+    name: '自动化'
